@@ -1,0 +1,19 @@
+{
+  "git.ignoreLimitWarning": true,
+
+  "editor.tabSize": 2,
+
+  "search.exclude": {
+    "**/node_modules": true
+  },
+
+  "files.exclude": {
+    "package-lock.json": true,
+    "**/node_modules": true,
+    "**/.git": true,
+    "**/.DS_Store": true,
+    "**/.sass-cache/": true,
+    "**/*.map": true,
+    "**/packages": true
+  }
+}
