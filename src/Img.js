@@ -7,9 +7,12 @@ class Img extends React.Component {
 
   render() {
     let { path, dirname } = this.props;
+    const url = dirname + '/' + path;
+    console.log(url);
     return (
       <div className='item wrap'>
-        <img src={ dirname + '/' + path } />
+        {/* <img src={ dirname + '/' + path } /> */}
+        <div className='img' style={{ backgroundImage: 'url(' + url + ')' }}></div>
       </div>
     );
   }
