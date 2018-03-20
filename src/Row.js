@@ -7,11 +7,11 @@ class Row extends React.Component {
   }
 
   render() {
-    const { dirname, imgs } = this.props;
+    const { dirname, imgs, handleImgClick } = this.props;
     let items = [];
     if (imgs) {
       items = [].map.call(imgs, (img, index) => {
-        return <Img key={ index.toString() } path={ img.path } dirname={ dirname } />;
+        return <Img key={ index.toString() } path={ img.path } dirname={ dirname } handleImgClick={ handleImgClick } />;
       });
     }
 

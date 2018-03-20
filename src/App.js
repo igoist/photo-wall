@@ -1,5 +1,6 @@
 import React from 'react';
 import Row from './Row';
+import Popover from './Popover';
 import '../public/css/index.css';
 
 class App extends React.Component {
@@ -7,9 +8,33 @@ class App extends React.Component {
     super(props);
     this.state = {
       res: [],
-      dirname: '/assets/img/target'
+      dirname: '/assets/img/target',
+      popover: {
+        flag: false,
+        src: ''
+      }
     };
     this.loadMap = this.loadMap.bind(this);
+    this.handleImgClick = this.handleImgClick.bind(this);
+    this.handlePopoverClick = this.handlePopoverClick.bind(this);
+  }
+
+  handleImgClick(src) {
+    this.setState(() => ({
+      popover: {
+        flag: true,
+        src
+      }
+    }));
+  }
+
+  handlePopoverClick() {
+    this.setState(() => ({
+      popover: {
+        flag: false,
+        src: ''
+      }
+    }));
   }
 
   componentDidMount() {
@@ -38,13 +63,17 @@ class App extends React.Component {
       const length = imgs.length;
       for (let i = 0; i * 6 < length; i++) {
         let tmp = imgs.slice(i * 6, (i + 1) * 6);
-        rows.push(<Row key={ i.toString() } dirname={ dirname } imgs={tmp} />);
+        rows.push(<Row key={ i.toString() } dirname={ dirname } imgs={ tmp } handleImgClick={ this.handleImgClick } />);
       }
     }
 
     return (
       <div className='grid'>
         { rows }
+
+        { this.state.popover.flag &&
+          <Popover handleClick={ this.handlePopoverClick } src={ this.state.popover.src } />
+        }
       </div>
     );
   }

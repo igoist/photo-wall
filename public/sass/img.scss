@@ -39,6 +39,7 @@ $c1-color: #66afe9;
     height: inherit;
     background-position: center 0;
     background-size: cover;
+    cursor: pointer;
     transition: opacity .18s ease-in-out, transform .18s ease-in-out;
 
     &:hover {
